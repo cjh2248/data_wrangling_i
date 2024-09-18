@@ -3,42 +3,19 @@ title: "Data Import"
 output: github_document
 ---
 
-
 ```{r setup}
 library(tidyverse)
 ```
 
-## Read in some data 
+## Read in some data
 
 Read in the litters dataset. 
 
+
 ```{r}
-litters_df = read_csv("data/FAS_litters.csv")
+litters_df = read.csv("data/FAS_litters.csv")
 litters_df = janitor::clean_names(litters_df)
 ```
 
-## Take a look at the data. 
-
-Printing in the console. 
-
-```{r}
-litters_df
-```
-
-```{r}
-head(litters_df)
-```
-
-```{r}
-skimr::skim(litters_df)
-```
-
-
-## Options to read_csv 
-
-```{r}
-litters_df = read.csv("./data/FAS_litters.csv", skip = 10, col_names = FALSE)
-```
-
-
+## Take a look at the data 
 
