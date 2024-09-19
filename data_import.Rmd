@@ -5,6 +5,7 @@ output: github_document
 
 ```{r setup}
 library(tidyverse)
+library(readxl)
 ```
 
 ## Read in some data
@@ -27,5 +28,30 @@ litters_df
 
 ```{r}
 tail(litters_df)
+```
+ 
+```{r}
+skimr::skim(litters_df)
+```
+
+## Options to read_csv
+
+```{r}
+litters_df = read_csv("data/FAS_litters.csv", skip = 10, col_names = FALSE)
+```
+
+```{r}
+litters_df = read_csv("data/FAS_litters.csv", na = c("", "NA", ".",  "999"))
+```
+
+Check out '?read_csv()' for more information. 
+
+## Other file formats 
+
+Read in an excel file. 
+
+```{r}
+mlb_df = read_excel("./data/mlb11.xlsx")
+mlb_df
 ```
 
