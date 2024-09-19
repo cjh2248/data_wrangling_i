@@ -8,3 +8,53 @@ library(tidyverse)
 ```
 
 This document wil show how to *manipulate* data. 
+
+Import the two datasets that we're going to manipulate. 
+
+```{r}
+litters_df = 
+  read_csv("data/FAS_litters.csv", na = c("NA","","."))
+
+litters_df = janitor::clean_names(litters_df)
+
+pups_df = 
+  read_csv("data/FAS_pups.csv", na = c("NA","","."))
+
+pups_df = janitor::clean_names(pups_df)   
+
+```
+## 'select' 
+
+Use 'select()' to select variables. 
+
+```{r}
+select(litters_df, group, litter_number, gd0_weight)
+```
+
+```{r}
+select(litters_df, group:gd18_weight)
+```
+
+```{r}
+select(litters_df, -pups_survive)
+```
+
+```{r}
+select(litters_df, -(group:gd18_weight))
+```
+```{r}
+select(litters_df, starts_with("gd")
+       
+select(litters_df, starts_with("pups")
+```
+
+```{r}
+select(litters_df, GROUP = group)
+
+rename(litters_df, litter_number, group)
+
+select(litters_df litter_number, gd0_weight, everything ())
+
+relocate(litters_df, litter_number, gd0_weight)
+```
+
