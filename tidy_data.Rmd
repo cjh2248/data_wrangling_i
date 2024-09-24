@@ -34,4 +34,22 @@ pulse_tidy_df =
     relocate(id,visit)
 ```
 
+Do one more example. 
+
+```{r}
+litters_df = 
+  read_csv("data/FAS_litters.csv", na = c("NA", ".", "")) |>
+  janitor::clean_names() |>
+  pivot_longer(
+    cols = gd0_weight:gd18_weight, 
+    names_to= "gd_time", 
+    values_to = "weight"
+  ) |>
+  mutate(
+    gd_time = case_match(
+      gd_time, 
+      "gd0_weight" ~ 0, 
+      "gd18_weight" ~ 18
+    ))
+```
 
